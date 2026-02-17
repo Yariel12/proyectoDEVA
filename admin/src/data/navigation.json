@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Dashboard",
+    "path": "/",
+    "icon": "FiHome"
+  },
+  {
+    "name": "Productos",
+    "path": "/products",
+    "icon": "FiBox"
+  },
+  {
+    "name": "Categorías",
+    "path": "/categories",
+    "icon": "FiGrid"
+  },
+  {
+    "name": "Usuarios",
+    "path": "/users",
+    "icon": "FiUsers"
+  },
+  {
+    "name": "Login",
+    "path": "/login",
+    "icon": "FiLogIn"
+  }
+]
