@@ -10,10 +10,10 @@ import { adminOnly, protect } from "../middlewares/auth.middleware.js";
 
 const ProductsRoutes = Router();
 
-ProductsRoutes.post("/create", protect, adminOnly, createProduct);
-ProductsRoutes.get("/getAllProducts", getProducts);
+ProductsRoutes.post("/createProducts", protect, adminOnly, createProduct);
+ProductsRoutes.get("/getAllProducts", protect, getProducts);
 ProductsRoutes.get("/getByIdProduct/:id", getProductById);
-ProductsRoutes.put("/updateProduct/:id", protect, adminOnly, updateProduct);
+ProductsRoutes.put("/updateProduct/:id", protect, updateProduct);
 ProductsRoutes.delete("/deleteProduct/:id", protect, adminOnly, deleteProduct);
 
 export default ProductsRoutes;

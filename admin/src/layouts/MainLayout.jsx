@@ -15,11 +15,11 @@ function MainLayout() {
       <Sidebar isOpen={isOpen} />
 
       <div className="flex-1">
-        <div className="p-4 bg-white shadow">
+        <div className="p-4 bg-[#F8F6F2] shadow">
           <SidebarToggle isOpen={isOpen} toggle={toggleSidebar} />
         </div>
 
-        <main className="p-8">
+        <main>
           <Outlet />
         </main>
       </div>

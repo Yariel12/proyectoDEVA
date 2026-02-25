@@ -37,6 +37,11 @@ const productSchema = new mongoose.Schema(
       type: [String],
       required: true,
     },
+    provider: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Provider",
+      required: true,
+    },
 
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

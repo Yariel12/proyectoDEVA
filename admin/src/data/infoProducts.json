@@ -1,0 +1,21 @@
+{
+  "products": {
+    "title": "Crear Producto",
+    "placeholders": {
+      "provider": "Selecciona un proveedor",
+      "category": "Selecciona una categoría"
+    },
+    "fields": {
+      "name": "Nombre",
+      "description": "Descripción",
+      "price": "Precio",
+      "stock": "Stock",
+      "provider": "Proveedor",
+      "images": "Imagen (URLs separadas por coma)"
+    },
+    "buttons": {
+      "save": "Guardar",
+      "delete": "Borrar"
+    }
+  }
+}

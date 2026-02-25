@@ -6,18 +6,69 @@
   },
   {
     "name": "Productos",
-    "path": "/products",
-    "icon": "FiBox"
+    "icon": "FiBox",
+    "children": [
+      {
+        "name": "Crear Producto",
+        "path": "/products/create"
+      },
+      {
+        "name": "Ver Productos",
+        "path": "/products/List"
+      }
+    ]
   },
   {
     "name": "Categorías",
-    "path": "/categories",
-    "icon": "FiGrid"
+    "icon": "FiGrid",
+    "children": [
+      {
+        "name": "Crear Categoría",
+        "path": "/categories/create"
+      },
+      {
+        "name": "Gestionar Categorías",
+        "path": "/categories/List"
+      }
+    ]
   },
   {
-    "name": "Usuarios",
-    "path": "/users",
-    "icon": "FiUsers"
+    "name": "Inventarios",
+    "icon": "FiArchive",
+    "children": [
+      {
+        "name": "Movimientos",
+        "path": "/inventories/movements"
+      },
+      {
+        "name": "Stock",
+        "path": "/inventories"
+      }
+    ]
+  },
+  {
+    "name": "Admin de usuarios",
+    "icon": "FiUsers",
+    "children": [
+      {
+        "name": "Todos los usuarios",
+        "path": "/AdminUsers/AllUsers"
+      }
+    ]
+  },
+  {
+    "name": "Proveedores",
+    "icon": "FiTruck",
+    "children": [
+      {
+        "name": "Lista de proveedores",
+        "path": "/providers/List"
+      },
+      {
+        "name": "Agregar Proveedor",
+        "path": "/providers/create"
+      }
+    ]
   },
   {
     "name": "Login",
