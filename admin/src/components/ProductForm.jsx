@@ -14,7 +14,7 @@ function ProductForm() {
 
   return (
     <div className="w-full min-h-screen px-16 py-10">
-      <h1 className="mb-10 text-2xl font-semibold text-[#2E2E2E] tracking-wide">
+      <h1 className="mb-6 text-3xl font-semibold text-gray-900">
         {infoProducts.products.title}
       </h1>
 
@@ -37,7 +37,6 @@ function ProductForm() {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
-                required
               />
             </div>
 
@@ -51,7 +50,6 @@ function ProductForm() {
                 onChange={handleChange}
                 rows="4"
                 className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
-                required
               />
             </div>
 

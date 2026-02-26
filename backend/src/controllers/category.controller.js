@@ -114,6 +114,12 @@ export const updateCategory = async (req, res) => {
 
 export const desactivateCategory = async (req, res) => {
   try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "ID inválido" });
+    }
+
     const category = await Category.findByIdAndUpdate(
       req.params.id,
       { isActive: false },

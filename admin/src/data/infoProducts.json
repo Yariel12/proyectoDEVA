@@ -15,7 +15,21 @@
     },
     "buttons": {
       "save": "Guardar",
-      "delete": "Borrar"
+      "delete": "Borrar",
+      "button": "Nuevo Producto",
+      "reset": "Resetear filtros"
+    },
+    "list": {
+      "title": "Gestión de Productos",
+      "information": "Administra y controla tu inventario",
+      "tablet": {
+        "name": "Producto",
+        "price": "Precio",
+        "stock": "Stock",
+        "category": "Categoría",
+        "provider": "Proveedor",
+        "actions": "Acciones"
+      }
     }
   }
 }

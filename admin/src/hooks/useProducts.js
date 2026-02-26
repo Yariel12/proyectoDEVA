@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { sileo } from "sileo";
 import {
   getProductsServices,
@@ -20,7 +20,11 @@ export const useProducts = () => {
       const response = await requestFn();
 
       if (successMessage) {
-        sileo.success(successMessage);
+        sileo.success({
+          title: "Éxito",
+          description: successMessage,
+          duration: 4000,
+        });
       }
 
       return response;
@@ -40,8 +44,10 @@ export const useProducts = () => {
     }
   };
 
-  const getProducts = (params) =>
-    handleRequest(() => getProductsServices(params));
+  const getProducts = useCallback(
+    (params) => handleRequest(() => getProductsServices(params)),
+    [],
+  );
 
   const createProduct = (productData) =>
     handleRequest(

@@ -1,6 +1,5 @@
 import httpClient from "../apis/httpClient";
 
-// Ver productos
 export const getProductsServices = async (params = {}) => {
   const response = await httpClient.get("/products/getAllProducts", {
     params,
@@ -9,7 +8,6 @@ export const getProductsServices = async (params = {}) => {
   return response.data;
 };
 
-// crear productos
 export const createProductsServices = async (productData) => {
   const response = await httpClient.post(
     "/products/createProducts",

@@ -3,9 +3,9 @@ function LoginButton({ isLoading }) {
     <button
       type="submit"
       disabled={isLoading}
-      className="w-full py-2 text-white transition bg-black rounded-lg hover:bg-gray-800 disabled:opacity-60"
+      className="w-full py-3 text-white rounded-lg transition-all duration-300 bg-[#007bff] hover:bg-[#0056b3] disabled:opacity-60"
     >
-      {isLoading ? "Cargando..." : "Iniciar Sesión"}
+      {isLoading ? "Cargando..." : "INGRESAR"}
     </button>
   );
 }

@@ -20,7 +20,7 @@ export const useLogin = () => {
       sessionStorage.setItem("user", JSON.stringify(data.user));
 
       sileo.success({
-        title: "Bienvenido",
+        title: "Bienvenido (A)",
         description: `Hola ${data.user.name}, has iniciado sesión correctamente.`,
       });
 

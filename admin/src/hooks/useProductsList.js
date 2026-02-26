@@ -21,19 +21,23 @@ export const useProductsList = () => {
   useEffect(() => {
     const load = async () => {
       try {
-        const params = {
+        const cleanFilters = Object.fromEntries(
+          Object.entries(filters).filter(
+            ([, value]) => value !== "" && value !== null,
+          ),
+        );
+
+        const data = await getProducts({
           page,
           limit,
-          ...filters,
-        };
-
-        const data = await getProducts(params);
+          ...cleanFilters,
+        });
 
         setProducts(data.products);
         setTotal(data.total);
         setTotalPages(data.totalPages);
       } catch (error) {
-        console.log(error);
+        console.error("Error loading products:", error);
       }
     };
 

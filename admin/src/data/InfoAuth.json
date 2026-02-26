@@ -1,0 +1,11 @@
+{
+  "Login": {
+    "title": "Bienvenido(a)",
+    "subtitle": "Ferreteria Deva"
+  },
+
+  "Register": {
+    "title": "Crea tu cuenta",
+    "subtitle": "Únete a Ferreteria Deva"
+  }
+}

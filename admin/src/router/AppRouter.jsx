@@ -27,6 +27,7 @@ function AppRouter() {
           <Route path="/categories/List" element={<CategoriesList />} />
           <Route path="/categories/create" element={<CategoriesCreate />} />
           <Route path="/inventories" element={<Inventories />} />
+          <Route path="/inventories/movements" element={<Inventories />} />
           <Route path="/AdminUsers/AllUsers" element={<AdminUsersAll />} />
           <Route path="/providers/List" element={<ProvidersList />} />
           <Route path="/providers/create" element={<ProvidersCreate />} />

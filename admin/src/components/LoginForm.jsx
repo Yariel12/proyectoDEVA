@@ -6,7 +6,7 @@ import LoginInput from "./LoginInput";
 import LoginButton from "./LoginButton";
 
 function LoginForm() {
-  const { login, isLoading, error } = useLogin();
+  const { login, isLoading } = useLogin();
 
   const [form, setForm] = useState({
     email: "",
@@ -46,8 +46,6 @@ function LoginForm() {
         onChange={handleChange}
         placeholder="********"
       />
-
-      {error && <p className="text-sm text-red-500">{error}</p>}
 
       <LoginButton isLoading={isLoading} />
     </form>

@@ -1,4 +1,4 @@
-import ProviderModel from "../models/provider.model.js";
+import ProviderModel from "../models/Provider.model.js";
 import ProductModel from "../models/product.model.js";
 
 export const createProvider = async (req, res) => {

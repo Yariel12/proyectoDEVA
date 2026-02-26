@@ -7,8 +7,8 @@ function LoginInput({
   placeholder,
 }) {
   return (
-    <div className="space-y-1">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <div className="space-y-2">
+      <label className="block text-sm text-gray-500">{label}</label>
 
       <input
         type={type}
@@ -17,7 +17,7 @@ function LoginInput({
         onChange={onChange}
         placeholder={placeholder}
         required
-        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:border-transparent transition"
       />
     </div>
   );
