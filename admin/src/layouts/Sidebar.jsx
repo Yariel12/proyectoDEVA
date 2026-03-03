@@ -21,7 +21,7 @@ function Sidebar({ isOpen }) {
 
   return (
     <aside
-      className={`bg-[#F5F1EB] text-[#2E2E2E] transition-all duration-300 
+      className={`bg-[#D8D4CC] text-[#2E2E2E] transition-all duration-300 
       ${isOpen ? "w-64" : "w-20"} min-h-screen border-r border-[#E5E0D8]`}
     >
       <div className="p-6 text-2xl font-bold border-b border-[#E5E0D8]">

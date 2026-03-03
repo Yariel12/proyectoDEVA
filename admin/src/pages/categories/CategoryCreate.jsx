@@ -1,7 +1,8 @@
 import React from "react";
+import CategoryCreateForm from "../../components/CategoryCreateForm.jsx";
 
 function CategoryCreate() {
-  return <div>CategoryCreate</div>;
+  return <CategoryCreateForm />;
 }
 
 export default CategoryCreate;

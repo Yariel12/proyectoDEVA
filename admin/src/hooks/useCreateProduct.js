@@ -22,13 +22,35 @@ export const useCreateProduct = () => {
   useEffect(() => {
     const fetchRelations = async () => {
       try {
-        const cats = await getCategoriesServices();
-        const provs = await getProvidersServices();
+        const catsResponse = await getCategoriesServices({
+          page: 1,
+          limit: 100,
+        });
 
-        setCategories(cats);
-        setProviders(provs);
+        const provsResponse = await getProvidersServices({
+          page: 1,
+          limit: 100,
+        });
+
+        // 🔐 Manejo seguro por si viene array directo o { data: [] }
+        const categoriesData = Array.isArray(catsResponse)
+          ? catsResponse
+          : Array.isArray(catsResponse?.data)
+            ? catsResponse.data
+            : [];
+
+        const providersData = Array.isArray(provsResponse)
+          ? provsResponse
+          : Array.isArray(provsResponse?.data)
+            ? provsResponse.data
+            : [];
+
+        setCategories(categoriesData);
+        setProviders(providersData);
       } catch (err) {
         console.log("Error cargando relaciones:", err);
+        setCategories([]);
+        setProviders([]);
       }
     };
 

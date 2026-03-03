@@ -39,11 +39,35 @@ export const createCategory = async (req, res) => {
 
 export const getCategories = async (req, res) => {
   try {
-    const categories = await Category.find({ isActive: true }).sort({
-      createdAt: -1,
-    });
+    let { page = 1, limit = 10, search = "" } = req.query;
 
-    res.json(categories);
+    page = parseInt(page);
+    limit = parseInt(limit);
+
+    if (page < 1) page = 1;
+    if (limit < 1) limit = 10;
+
+    const query = {
+      isActive: true,
+      name: { $regex: search, $options: "i" },
+    };
+
+    const total = await Category.countDocuments(query);
+
+    const categories = await Category.find(query)
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    res.json({
+      data: categories,
+      pagination: {
+        total,
+        totalPages: Math.ceil(total / limit),
+        currentPage: page,
+        limit,
+      },
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

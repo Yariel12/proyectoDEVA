@@ -1,0 +1,13 @@
+{
+  "category": {
+    "title": "Create Categoria",
+    "inputs": [
+      {
+        "name": "Nombre"
+      },
+      {
+        "description": "Descripción de la categoría"
+      }
+    ]
+  }
+}

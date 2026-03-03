@@ -13,7 +13,7 @@ function ProductForm() {
   } = useCreateProduct();
 
   return (
-    <div className="w-full min-h-screen px-16 py-10">
+    <div className="w-full min-h-screen px-16 py-10 ">
       <h1 className="mb-6 text-3xl font-semibold text-gray-900">
         {infoProducts.products.title}
       </h1>
@@ -36,7 +36,7 @@ function ProductForm() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
+                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               />
             </div>
 
@@ -49,7 +49,7 @@ function ProductForm() {
                 value={formData.description}
                 onChange={handleChange}
                 rows="4"
-                className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
+                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               />
             </div>
 
@@ -62,8 +62,7 @@ function ProductForm() {
                 name="stock"
                 value={formData.stock}
                 onChange={handleChange}
-                className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
-                required
+                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               />
             </div>
 
@@ -76,8 +75,7 @@ function ProductForm() {
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
-                className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
-                required
+                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               />
             </div>
           </div>
@@ -91,8 +89,7 @@ function ProductForm() {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
-                required
+                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               >
                 <option value="">
                   {infoProducts.products.placeholders.category}
@@ -113,8 +110,7 @@ function ProductForm() {
                 name="provider"
                 value={formData.provider}
                 onChange={handleChange}
-                className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
-                required
+                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               >
                 <option value="">
                   {infoProducts.products.placeholders.provider}
@@ -135,7 +131,7 @@ function ProductForm() {
                 type="text"
                 name="images"
                 onChange={handleImages}
-                className="w-full p-3 bg-[#EFEDE9] border border-[#D8D4CC] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89B5E]"
+                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               />
             </div>
           </div>

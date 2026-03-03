@@ -1,7 +1,7 @@
 import httpClient from "../apis/httpClient";
 
-export const getCategoriesServices = async () => {
-  const response = await httpClient.get("/category/getAllCategory");
+export const getCategoriesServices = async (params) => {
+  const response = await httpClient.get("/category/getAllCategory", { params });
   return response.data;
 };
 
@@ -11,7 +11,7 @@ export const getCategoryByIdServices = async (id) => {
 };
 
 export const createCategoryServices = async (data) => {
-  const response = await httpClient.post("/category", data);
+  const response = await httpClient.post("/category/createCategory", data);
   return response.data;
 };
 

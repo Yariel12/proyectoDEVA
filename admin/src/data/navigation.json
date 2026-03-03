@@ -47,7 +47,7 @@
     ]
   },
   {
-    "name": "Admin de usuarios",
+    "name": "Usuarios",
     "icon": "FiUsers",
     "children": [
       {
