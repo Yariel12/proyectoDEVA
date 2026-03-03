@@ -1,13 +1,35 @@
 {
   "category": {
-    "title": "Create Categoria",
-    "inputs": [
-      {
-        "name": "Nombre"
+    "createCategory": {
+      "title": "Crear Categoría",
+      "inputs": [
+        {
+          "name": "name",
+          "label": "Nombre"
+        },
+        {
+          "name": "description",
+          "label": "Descripción de la categoría"
+        }
+      ]
+    },
+    "lists": {
+      "title": "Lista de Categorías",
+      "information": "Administra las categorías registradas en el sistema",
+      "buttons": {
+        "ButtonCreateCategory": "Nueva Categoría"
       },
-      {
-        "description": "Descripción de la categoría"
+      "table": {
+        "name": "Nombre",
+        "description": "Descripción",
+        "status": "Estado",
+        "actions": "Acciones"
       }
-    ]
+    }
+  },
+  "load": {
+    "loading": "Cargando categorías...",
+    "error": "Error al cargar los datos",
+    "noData": "No hay categorías registradas"
   }
 }

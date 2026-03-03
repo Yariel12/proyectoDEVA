@@ -1,0 +1,11 @@
+{
+  "home": {
+    "title": "Panel Administrativo",
+    "description": "Administra productos, categorías, inventario y usuarios desde un solo lugar. Control total y organización clara.",
+    "buttons": {
+      "products": "Gestionar Productos",
+      "categories": "Todas las Categorías",
+      "users": "Gestionar Usuarios"
+    }
+  }
+}

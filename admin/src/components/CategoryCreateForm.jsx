@@ -1,13 +1,15 @@
 import { useCreateCategory } from "../hooks/useCreateCategory";
-import InfoCategory from "../data/InfoCategory.json";
+import enums from "../data/InfoCategory.json";
 
 function CreateCategory() {
   const { formData, loading, handleChange, handleSubmit } = useCreateCategory();
 
+  const createCategory = enums.category.createCategory;
+
   return (
     <div className="w-full min-h-screen px-16 py-10">
       <h1 className="mb-6 text-3xl font-semibold text-gray-900">
-        {InfoCategory.category.title}
+        {createCategory.title}
       </h1>
 
       <form
@@ -19,31 +21,31 @@ function CreateCategory() {
       >
         <div className="grid gap-10 md:grid-cols-2">
           <div className="space-y-6">
-            <div>
-              <label className="block mb-2 text-sm text-gray-500">
-                {InfoCategory.category.inputs[0].name}
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
-              />
-            </div>
+            {createCategory.inputs.map((input) => (
+              <div key={input.name}>
+                <label className="block mb-2 text-sm text-gray-500">
+                  {input.label}
+                </label>
 
-            <div>
-              <label className="block mb-2 text-sm text-gray-500">
-                {InfoCategory.category.inputs[1].description}
-              </label>
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                rows="4"
-                className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
-              />
-            </div>
+                {input.name === "description" ? (
+                  <textarea
+                    name={input.name}
+                    value={formData[input.name] || ""}
+                    onChange={handleChange}
+                    rows="4"
+                    className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
+                  />
+                ) : (
+                  <input
+                    type="text"
+                    name={input.name}
+                    value={formData[input.name] || ""}
+                    onChange={handleChange}
+                    className="w-full p-3 bg-white border border-[#007bff] rounded-md focus:outline-none focus:ring-1 focus:ring-[#007bff]"
+                  />
+                )}
+              </div>
+            ))}
           </div>
         </div>
 

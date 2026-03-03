@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiEdit, FiTrash2, FiPlus } from "react-icons/fi";
 import { useCategoryList } from "../hooks/useCategoryList";
+import enums from "../data/InfoCategory.json";
 
 function CategoryList() {
   const { categories, loading, handleDelete, pagination, page, setPage } =
@@ -11,10 +12,10 @@ function CategoryList() {
       <div className="flex items-center justify-between mb-10">
         <div>
           <h1 className="text-3xl font-semibold text-gray-900">
-            Lista de Categorías
+            {enums.category.lists.title}
           </h1>
           <p className="mt-1 text-sm text-gray-500">
-            Administra las categorías registradas en el sistema
+            {enums.category.lists.information}
           </p>
         </div>
 
@@ -23,7 +24,7 @@ function CategoryList() {
           className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#007bff] rounded-xl transition-all duration-200 hover:bg-blue-800 hover:scale-105"
         >
           <FiPlus size={18} />
-          Nueva Categoría
+          {enums.category.lists.buttons.ButtonCreateCategory}
         </Link>
       </div>
 
@@ -31,10 +32,19 @@ function CategoryList() {
         <table className="w-full text-sm text-left">
           <thead className="text-xs tracking-wider text-gray-600 uppercase bg-gray-50">
             <tr>
-              <th className="p-5 font-medium">Nombre</th>
-              <th className="p-5 font-medium">Descripción</th>
-              <th className="p-5 font-medium text-center">Acciones</th>
-              <th className="p-5 font-medium text-center">Activas</th>
+              <th className="p-5 font-medium">
+                {" "}
+                {enums.category.lists.table.name}
+              </th>
+              <th className="p-5 font-medium">
+                {enums.category.lists.table.description}
+              </th>
+              <th className="p-5 font-medium text-center">
+                {enums.category.lists.table.status}
+              </th>
+              <th className="p-5 font-medium text-center">
+                {enums.category.lists.table.actions}
+              </th>
             </tr>
           </thead>
 
@@ -42,7 +52,7 @@ function CategoryList() {
             {loading ? (
               <tr>
                 <td colSpan="3" className="p-8 text-center text-gray-500">
-                  Cargando categorías...
+                  {enums.load.loading}
                 </td>
               </tr>
             ) : categories.length === 0 ? (
