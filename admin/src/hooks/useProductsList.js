@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useProducts } from "./useProducts";
 
 export const useProductsList = () => {
-  const { getProducts, loading } = useProducts();
+  const { getProducts, loading, deleteProduct } = useProducts();
 
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
@@ -62,6 +62,15 @@ export const useProductsList = () => {
     });
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await deleteProduct(id);
+      setProducts((prev) => prev.filter((product) => product._id !== id));
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
   return {
     products,
     total,
@@ -72,5 +81,6 @@ export const useProductsList = () => {
     handleFilterChange,
     resetFilters,
     loading,
+    handleDelete,
   };
 };

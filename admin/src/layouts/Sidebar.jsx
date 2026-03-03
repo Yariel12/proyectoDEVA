@@ -3,6 +3,7 @@ import { useState } from "react";
 import navigation from "../data/navigation.json";
 import { FiChevronRight } from "react-icons/fi";
 import * as FiIcon from "react-icons/fi";
+import MINI_LOGO from "../assets/MINI_LOGO.jpeg";
 
 function Sidebar({ isOpen }) {
   const [openMenu, setOpenMenu] = useState(null);
@@ -25,14 +26,21 @@ function Sidebar({ isOpen }) {
       ${isOpen ? "w-64" : "w-20"} min-h-screen border-r border-[#E5E0D8]`}
     >
       <div className="p-6 text-2xl font-bold border-b border-[#E5E0D8]">
-        {isOpen ? "Yarielito" : "Yari"}
+        {isOpen ? (
+          "Ferreteria Deva"
+        ) : (
+          <img
+            src={MINI_LOGO}
+            alt="Logo"
+            className="object-contain w-10 h-10"
+          />
+        )}
       </div>
 
       <nav className="flex flex-col gap-2 p-4">
         {navigation.map((item) => {
           const Icon = FiIcon[item.icon];
 
-          // ITEMS CON HIJOS
           if (item.children) {
             return (
               <div key={item.name}>

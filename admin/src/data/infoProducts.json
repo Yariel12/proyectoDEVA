@@ -28,7 +28,8 @@
         "stock": "Stock",
         "category": "Categoría",
         "provider": "Proveedor",
-        "actions": "Acciones"
+        "actions": "Acciones",
+        "status": "Estado"
       }
     }
   }

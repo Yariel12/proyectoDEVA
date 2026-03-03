@@ -21,6 +21,6 @@ export const updateCategoryServices = async (id, data) => {
 };
 
 export const deleteCategoryServices = async (id) => {
-  const response = await httpClient.delete(`/category/${id}`);
+  const response = await httpClient.delete(`/category/delete/${id}`);
   return response.data;
 };

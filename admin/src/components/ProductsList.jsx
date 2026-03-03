@@ -14,6 +14,7 @@ function ProductsList() {
     handleFilterChange,
     resetFilters,
     loading,
+    handleDelete,
   } = useProductsList();
 
   return (
@@ -65,6 +66,9 @@ function ProductsList() {
               <th className="p-5 font-medium">
                 {infoProducts.products.list.tablet.name}
               </th>
+              <th className="p-5 font-medium text-center">
+                {infoProducts.products.list.tablet.status}
+              </th>
               <th className="p-5 font-medium">
                 {infoProducts.products.list.tablet.price}
               </th>
@@ -102,6 +106,17 @@ function ProductsList() {
                   <td className="p-5 font-medium text-gray-900">
                     {product.name}
                   </td>
+                  <td className="p-5 text-center">
+                    <span
+                      className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${
+                        product.isActive
+                          ? "text-green-800 bg-green-100"
+                          : "text-red-800 bg-red-100"
+                      }`}
+                    >
+                      {product.isActive ? "Activo" : "Inactivo"}
+                    </span>
+                  </td>
 
                   <td className="p-5 font-semibold text-gray-800">
                     ${product.price?.toLocaleString()}
@@ -127,7 +142,10 @@ function ProductsList() {
                       <FiEdit size={17} />
                     </Link>
 
-                    <button className="flex items-center justify-center text-red-600 transition-all duration-200 w-9 h-9 rounded-xl bg-red-50 hover:bg-red-600 hover:text-white hover:scale-105">
+                    <button
+                      onClick={() => handleDelete(product._id)}
+                      className="flex items-center justify-center text-red-600 transition-all duration-200 w-9 h-9 rounded-xl bg-red-50 hover:bg-red-600 hover:text-white hover:scale-105"
+                    >
                       <FiTrash2 size={17} />
                     </button>
                   </td>
