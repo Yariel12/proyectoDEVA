@@ -169,3 +169,23 @@ export const deleteProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const toggleProductStatus = async (req, res) => {
+  try {
+    const product = await ProductModel.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    product.isActive = !product.isActive;
+    await product.save();
+
+    res.json({
+      message: "Estado del producto actualizado",
+      isActive: product.isActive,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

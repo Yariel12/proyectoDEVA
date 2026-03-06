@@ -37,12 +37,16 @@
     "icon": "FiArchive",
     "children": [
       {
-        "name": "Movimientos",
-        "path": "/inventories/movements"
+        "name": "Ver Stock",
+        "path": "/inventories/stock"
       },
       {
-        "name": "Stock",
-        "path": "/inventories"
+        "name": "Movimientos",
+        "path": "/inventories/List/movements"
+      },
+      {
+        "name": "Nuevo Movimiento",
+        "path": "/inventories/add/movement"
       }
     ]
   },
@@ -71,7 +75,7 @@
     ]
   },
   {
-    "name": "Login",
+    "name": "Cerrar Sesión",
     "path": "/login",
     "icon": "FiLogIn"
   }

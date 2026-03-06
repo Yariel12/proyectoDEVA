@@ -8,10 +8,13 @@ import CategoriesCreate from "../pages/categories/CategoryCreate.jsx";
 import CategoryListPage from "../pages/categories/CategoryListPage.jsx";
 import ProvidersList from "../pages/providers/ProvidersList.jsx";
 import ProvidersCreate from "../pages/providers/ProvidersCreate.jsx";
-import Inventories from "../pages/inventories/InvetoryList.jsx";
+import InventoriesAddMovement from "../pages/inventories/InventoriesAddMovement.jsx";
+import InventoriesStock from "../pages/inventories/InventoriesStock.jsx";
+import InventoriesListMovements from "../pages/inventories/InventoriesListMovements.jsx";
 import Login from "../pages/auth/Login.jsx";
 import Register from "../pages/auth/Register.jsx";
 import EditProduct from "../pages/products/EditProduct.jsx";
+import ProtectedRoute from "../router/ProtectedRoute.jsx";
 import AdminUsersAll from "../pages/auth/AdminUsersAll.jsx";
 import NotFound from "../pages/NotFound.jsx";
 
@@ -21,24 +24,32 @@ function AppRouter() {
       <Toaster position="top-right" />
 
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/products/List" element={<ProductsList />} />
-          <Route path="/products/create" element={<ProductsCreate />} />
-          <Route path="/products/edit/:id" element={<EditProduct />} />
-          <Route path="/categories/List" element={<CategoryListPage />} />
-          <Route path="/categories/create" element={<CategoriesCreate />} />
-          <Route path="/inventories" element={<Inventories />} />
-          <Route path="/inventories/movements" element={<Inventories />} />
-          <Route path="/providers/List" element={<ProvidersList />} />
-          <Route path="/providers/create" element={<ProvidersCreate />} />
-          <Route path="/AdminUsers/AllUsers" element={<AdminUsersAll />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/products/List" element={<ProductsList />} />
+            <Route path="/products/create" element={<ProductsCreate />} />
+            <Route path="/products/edit/:id" element={<EditProduct />} />
+            <Route path="/categories/List" element={<CategoryListPage />} />
+            <Route path="/categories/create" element={<CategoriesCreate />} />
+            <Route path="/inventories/stock" element={<InventoriesStock />} />
+            <Route
+              path="/inventories/add/movement"
+              element={<InventoriesAddMovement />}
+            />
+            <Route
+              path="/inventories/List/movements"
+              element={<InventoriesListMovements />}
+            />
+            <Route path="/providers/List" element={<ProvidersList />} />
+            <Route path="/providers/create" element={<ProvidersCreate />} />
+            <Route path="/AdminUsers/AllUsers" element={<AdminUsersAll />} />
+          </Route>
         </Route>
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

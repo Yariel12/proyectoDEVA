@@ -9,19 +9,19 @@ import { protect, adminOnly } from "../middlewares/auth.middleware.js";
 const InvetoryMovements = express.Router();
 
 InvetoryMovements.post(
-  "/AddInvetoryProducts",
+  "/Add/Stock/Products",
   protect,
   adminOnly,
   createInventoryMovement,
 );
 InvetoryMovements.get(
-  "/GetMovementsInvetory",
+  "/Get/Movements/history",
   protect,
   adminOnly,
   getInventoryMovements,
 );
 InvetoryMovements.get(
-  "/AllProducts/:productId",
+  "/movements/product/:id",
   protect,
   adminOnly,
   getMovementsByProduct,

@@ -54,7 +54,7 @@ export const createInventoryMovement = async (req, res) => {
       note,
       previousStock,
       newStock,
-      createdBy: req.user.id, // según tu middleware
+      createdBy: req.user.id,
     });
 
     res.status(201).json({
@@ -98,4 +98,3 @@ export const getMovementsByProduct = async (req, res) => {
     });
   }
 };
-

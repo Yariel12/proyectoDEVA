@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useProducts } from "./useProducts";
+import { useConfirm } from "./useConfirm";
 
 export const useProductsList = () => {
   const { getProducts, loading, deleteProduct } = useProducts();
-
+  const { confirm } = useConfirm();
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
@@ -64,6 +65,8 @@ export const useProductsList = () => {
 
   const handleDelete = async (id) => {
     try {
+      const isConfirmed = await confirm("Esta acción no se puede deshacer.");
+      if (!isConfirmed) return;
       await deleteProduct(id);
       setProducts((prev) => prev.filter((product) => product._id !== id));
     } catch (error) {

@@ -6,12 +6,13 @@
       "category": "Selecciona una categoría"
     },
     "fields": {
-      "name": "Nombre",
-      "description": "Descripción",
-      "price": "Precio",
-      "stock": "Stock",
-      "provider": "Proveedor",
-      "images": "Imagen (URLs separadas por coma)"
+      "name": "Nombre *",
+      "description": "Descripción *",
+      "price": "Precio *",
+      "stock": "Stock *",
+      "provider": "Proveedor *",
+      "images": "Imagen (URLs separadas por coma) *",
+      "categories": "Categorías *"
     },
     "buttons": {
       "save": "Guardar",

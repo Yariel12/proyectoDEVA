@@ -3,10 +3,18 @@ import { useState } from "react";
 import navigation from "../data/navigation.json";
 import { FiChevronRight } from "react-icons/fi";
 import * as FiIcon from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import MINI_LOGO from "../assets/MINI_LOGO.jpeg";
 
 function Sidebar({ isOpen }) {
   const [openMenu, setOpenMenu] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const toggleMenu = (name) => {
     setOpenMenu(openMenu === name ? null : name);
@@ -102,6 +110,11 @@ function Sidebar({ isOpen }) {
             <NavLink
               key={item.path}
               to={item.path}
+              onClick={() => {
+                if (item.path === "/login") {
+                  handleLogout();
+                }
+              }}
               className={({ isActive }) =>
                 `${baseItemStyle} ${isActive ? activeStyle : inactiveStyle}`
               }

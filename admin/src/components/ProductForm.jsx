@@ -81,10 +81,10 @@ function ProductForm() {
           </div>
 
           <div className="space-y-6">
+            <label className="block mb-2 text-sm text-gray-500">
+              {infoProducts.products.fields.categories}
+            </label>
             <div>
-              <label className="block mb-2 text-sm text-gray-500">
-                {infoProducts.products.fields.category}
-              </label>
               <select
                 name="category"
                 value={formData.category}
@@ -101,7 +101,6 @@ function ProductForm() {
                 ))}
               </select>
             </div>
-
             <div>
               <label className="block mb-2 text-sm text-gray-500">
                 {infoProducts.products.fields.provider}
@@ -122,7 +121,6 @@ function ProductForm() {
                 ))}
               </select>
             </div>
-
             <div>
               <label className="block mb-2 text-sm text-gray-500">
                 {infoProducts.products.fields.images}
