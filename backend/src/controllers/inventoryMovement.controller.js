@@ -27,7 +27,6 @@ export const createInventoryMovement = async (req, res) => {
 
     const previousStock = existingProduct.stock;
 
-    // 🔥 Lógica de inventario
     if (direction === "in") {
       existingProduct.stock += quantity;
     }
@@ -70,23 +69,40 @@ export const createInventoryMovement = async (req, res) => {
 
 export const getInventoryMovements = async (req, res) => {
   try {
-    const movements = await InventoryMovement.find()
-      .populate("product", "name")
-      .populate("createdBy", "name email")
-      .sort({ createdAt: -1 });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
 
-    res.json(movements);
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
+    const [movements, total] = await Promise.all([
+      InventoryMovement.find()
+        .populate("product", "name")
+        .populate("createdBy", "name email")
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit),
+      InventoryMovement.countDocuments(),
+    ]);
+
+    res.json({
+      movements,
+      pagination: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+        hasNextPage: page < Math.ceil(total / limit),
+        hasPrevPage: page > 1,
+      },
     });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
 export const getMovementsByProduct = async (req, res) => {
   try {
     const movements = await InventoryMovement.find({
-      product: req.params.productId,
+      product: req.params.id,
     })
       .populate("createdBy", "name email")
       .sort({ createdAt: -1 });

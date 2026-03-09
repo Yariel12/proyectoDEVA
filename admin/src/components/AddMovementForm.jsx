@@ -39,7 +39,7 @@ function AddMovementForm() {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-gray-900">
-                Movimiento de Inventario
+                Agregar Stock a Productos
               </h1>
               <p className="mt-1 text-sm text-gray-600">
                 Registra entradas o salidas de productos en el inventario

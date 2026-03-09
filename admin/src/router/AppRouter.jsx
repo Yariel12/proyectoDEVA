@@ -9,7 +9,6 @@ import CategoryListPage from "../pages/categories/CategoryListPage.jsx";
 import ProvidersList from "../pages/providers/ProvidersList.jsx";
 import ProvidersCreate from "../pages/providers/ProvidersCreate.jsx";
 import InventoriesAddMovement from "../pages/inventories/InventoriesAddMovement.jsx";
-import InventoriesStock from "../pages/inventories/InventoriesStock.jsx";
 import InventoriesListMovements from "../pages/inventories/InventoriesListMovements.jsx";
 import Login from "../pages/auth/Login.jsx";
 import Register from "../pages/auth/Register.jsx";
@@ -17,6 +16,9 @@ import EditProduct from "../pages/products/EditProduct.jsx";
 import ProtectedRoute from "../router/ProtectedRoute.jsx";
 import AdminUsersAll from "../pages/auth/AdminUsersAll.jsx";
 import NotFound from "../pages/NotFound.jsx";
+import OrdersList from "../pages/orders/OrdersList.jsx";
+import OrdersCompleted from "../pages/orders/OrdersCompleted.jsx";
+import OrdersCancelled from "../pages/orders/OrdersCancelled.jsx";
 
 function AppRouter() {
   return (
@@ -32,7 +34,9 @@ function AppRouter() {
             <Route path="/products/edit/:id" element={<EditProduct />} />
             <Route path="/categories/List" element={<CategoryListPage />} />
             <Route path="/categories/create" element={<CategoriesCreate />} />
-            <Route path="/inventories/stock" element={<InventoriesStock />} />
+            <Route path="/orders/List" element={<OrdersList />} />
+            <Route path="/orders/Completed" element={<OrdersCompleted />} />
+            <Route path="/orders/Cancelled" element={<OrdersCancelled />} />
             <Route
               path="/inventories/add/movement"
               element={<InventoriesAddMovement />}

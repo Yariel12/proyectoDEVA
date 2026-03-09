@@ -17,7 +17,7 @@ ProductsRoutes.get("/getByIdProduct/:id", getProductById);
 ProductsRoutes.put("/updateProduct/:id", protect, updateProduct);
 ProductsRoutes.delete("/deleteProduct/:id", protect, adminOnly, deleteProduct);
 ProductsRoutes.patch(
-  "/product/toggle/:id",
+  "/patch/toggle/:id",
   protect,
   adminOnly,
   toggleProductStatus,

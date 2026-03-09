@@ -1,7 +1,9 @@
 import httpClient from "../apis/httpClient";
 
-export const getInventoryMovementsServices = async () => {
-  const response = await httpClient.get("/inventory/Get/Movements/history");
+export const getInventoryMovementsServices = async (page = 1, limit = 10) => {
+  const response = await httpClient.get(
+    `/inventory/Get/Movements/history?page=${page}&limit=${limit}`,
+  );
   return response.data;
 };
 

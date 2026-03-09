@@ -1,5 +1,6 @@
 import httpClient from "../apis/httpClient";
 
+// Obtener todos los productos con filtros opcionales
 export const getProductsServices = async (params = {}) => {
   const response = await httpClient.get("/products/getAllProducts", {
     params,
@@ -8,6 +9,7 @@ export const getProductsServices = async (params = {}) => {
   return response.data;
 };
 
+// Crear nuevo producto
 export const createProductsServices = async (productData) => {
   const response = await httpClient.post(
     "/products/createProducts",
@@ -34,5 +36,11 @@ export const updateProductsServices = async (id, productData) => {
 // Eliminar producto
 export const deleteProductsServices = async (id) => {
   const response = await httpClient.delete(`/products/deleteProduct/${id}`);
+  return response.data;
+};
+
+// Cambiar estado del producto
+export const toggleProductStatusServices = async (id) => {
+  const response = await httpClient.patch(`/products/patch/toggle/${id}`);
   return response.data;
 };

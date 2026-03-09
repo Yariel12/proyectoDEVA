@@ -37,16 +37,30 @@
     "icon": "FiArchive",
     "children": [
       {
-        "name": "Ver Stock",
-        "path": "/inventories/stock"
-      },
-      {
-        "name": "Movimientos",
+        "name": "Historial de Movimientos",
         "path": "/inventories/List/movements"
       },
       {
         "name": "Nuevo Movimiento",
         "path": "/inventories/add/movement"
+      }
+    ]
+  },
+  {
+    "name": "Pedidos",
+    "icon": "FiShoppingCart",
+    "children": [
+      {
+        "name": "Todos los pedidos",
+        "path": "/orders/List"
+      },
+      {
+        "name": "Pedidos Completados",
+        "path": "/orders/Completed"
+      },
+      {
+        "name": "Pedidos Cancelados",
+        "path": "/orders/Cancelled"
       }
     ]
   },

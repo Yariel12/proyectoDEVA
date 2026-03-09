@@ -10,6 +10,7 @@ export const useInventoryMovements = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movements, setMovements] = useState([]);
+  const [pagination, setPagination] = useState(null);
 
   const handleRequest = async (requestFn, successMessage) => {
     try {
@@ -44,9 +45,12 @@ export const useInventoryMovements = () => {
     }
   };
 
-  const getInventoryMovements = useCallback(async () => {
-    const data = await handleRequest(() => getInventoryMovementsServices());
-    setMovements(data);
+  const getInventoryMovements = useCallback(async (page = 1, limit = 10) => {
+    const data = await handleRequest(() =>
+      getInventoryMovementsServices(page, limit),
+    );
+    setMovements(data.movements);
+    setPagination(data.pagination);
     return data;
   }, []);
 
@@ -67,6 +71,7 @@ export const useInventoryMovements = () => {
     loading,
     error,
     movements,
+    pagination,
     getInventoryMovements,
     createInventoryMovement,
     getMovementsByProduct,

@@ -3,7 +3,7 @@ import { useProducts } from "./useProducts";
 import { useConfirm } from "./useConfirm";
 
 export const useProductsList = () => {
-  const { getProducts, loading, deleteProduct } = useProducts();
+  const { getProducts, loading, toggleProductStatus } = useProducts();
   const { confirm } = useConfirm();
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
@@ -67,7 +67,7 @@ export const useProductsList = () => {
     try {
       const isConfirmed = await confirm("Esta acción no se puede deshacer.");
       if (!isConfirmed) return;
-      await deleteProduct(id);
+      await toggleProductStatus(id);
       setProducts((prev) => prev.filter((product) => product._id !== id));
     } catch (error) {
       console.error("Error deleting product:", error);

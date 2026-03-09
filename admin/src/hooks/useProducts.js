@@ -6,6 +6,7 @@ import {
   getProductsByIdServices,
   updateProductsServices,
   deleteProductsServices,
+  toggleProductStatusServices,
 } from "../services/products.service";
 
 export const useProducts = () => {
@@ -70,6 +71,12 @@ export const useProducts = () => {
       "Producto eliminado correctamente",
     );
 
+  const toggleProductStatus = (id) =>
+    handleRequest(
+      () => toggleProductStatusServices(id),
+      "estado del producto actualizado correctamente",
+    );
+
   return {
     loading,
     error,
@@ -78,5 +85,6 @@ export const useProducts = () => {
     getProductById,
     updateProduct,
     deleteProduct,
+    toggleProductStatus,
   };
 };
