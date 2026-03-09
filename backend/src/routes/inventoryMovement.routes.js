@@ -6,25 +6,25 @@ import {
 } from "../controllers/inventoryMovement.controller.js";
 import { protect, adminOnly } from "../middlewares/auth.middleware.js";
 
-const InvetoryMovements = express.Router();
+const invetoryMovements = express.Router();
 
-InvetoryMovements.post(
+invetoryMovements.post(
   "/Add/Stock/Products",
   protect,
   adminOnly,
   createInventoryMovement,
 );
-InvetoryMovements.get(
+invetoryMovements.get(
   "/Get/Movements/history",
   protect,
   adminOnly,
   getInventoryMovements,
 );
-InvetoryMovements.get(
+invetoryMovements.get(
   "/movements/product/:id",
   protect,
   adminOnly,
   getMovementsByProduct,
 );
 
-export default InvetoryMovements;
+export default invetoryMovements;

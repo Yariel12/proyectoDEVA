@@ -10,23 +10,23 @@ import {
 
 import { protect, adminOnly } from "../middlewares/auth.middleware.js";
 
-const CategoryRouter = express.Router();
+const categoryRouter = express.Router();
 
-CategoryRouter.post("/createCategory", protect, adminOnly, createCategory);
-CategoryRouter.get("/getAllCategory", getCategories);
-CategoryRouter.get("/getById/:id", getCategoryById);
-CategoryRouter.put(
+categoryRouter.post("/createCategory", protect, adminOnly, createCategory);
+categoryRouter.get("/getAllCategory", getCategories);
+categoryRouter.get("/getById/:id", getCategoryById);
+categoryRouter.put(
   "/UpdateCategoryById/:id",
   protect,
   adminOnly,
   updateCategory,
 );
-CategoryRouter.delete("/delete/:id", protect, adminOnly, deleteCategory);
-CategoryRouter.delete(
+categoryRouter.delete("/delete/:id", protect, adminOnly, deleteCategory);
+categoryRouter.delete(
   "/desactivate/:id",
   protect,
   adminOnly,
   desactivateCategory,
 );
 
-export default CategoryRouter;
+export default categoryRouter;

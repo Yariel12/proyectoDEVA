@@ -2,11 +2,13 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
-import AuthRoutes from "../src/routes/auth.routes.js";
-import CategoryRouter from "./routes/category.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import categoryRouter from "./routes/category.routes.js";
 import ProductsRoutes from "./routes/products.routes.js";
-import InvetoryMovements from "./routes/inventoryMovement.routes.js";
+import invetoryMovements from "./routes/inventoryMovement.routes.js";
 import providerRoutes from "./routes/provider.routes.js";
+import ordersRoutes from "./routes/order.routes.js";
+import addressRoutes from "./routes/address.routes.js";
 
 dotenv.config();
 
@@ -17,15 +19,17 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", () => {
   res.send("API Ferretería funcionando");
 });
 
-app.use("/api/auth", AuthRoutes);
-app.use("/api/category", CategoryRouter);
+app.use("/api/auth", authRoutes);
+app.use("/api/category", categoryRouter);
 app.use("/api/products", ProductsRoutes);
-app.use("/api/inventory", InvetoryMovements);
+app.use("/api/inventory", invetoryMovements);
 app.use("/api/providers", providerRoutes);
+app.use("/api/orders", ordersRoutes);
+app.use("/api/address", addressRoutes);
 
 const PORT = process.env.PORT || 4000;
 
