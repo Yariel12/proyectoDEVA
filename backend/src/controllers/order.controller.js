@@ -3,6 +3,7 @@ import Order from "../models/orders.model.js";
 import Product from "../models/product.model.js";
 import InventoryMovement from "../models/InventoryMovement.model.js";
 import Address from "../models/address.model.js";
+import Cart from "../models/cart.model.js";
 
 export const createOrder = async (req, res) => {
   const session = await mongoose.startSession();
@@ -10,34 +11,44 @@ export const createOrder = async (req, res) => {
   try {
     session.startTransaction();
 
-    const { items, address } = req.body;
+    const { address } = req.body;
 
     let totalAmount = 0;
+
+    const cart = await Cart.findOne({ user: req.user.id }).session(session);
+
+    if (!cart || cart.items.length === 0) {
+      throw new Error("El carrito está vacío");
+    }
 
     const addressDoc = await Address.findById(address).session(session);
 
     if (!addressDoc) {
-      throw new Error("Direccion no encontrada");
+      throw new Error("Dirección no encontrada");
     }
 
     if (addressDoc.user.toString() !== req.user.id) {
       throw new Error("Esta dirección no pertenece al usuario.");
     }
 
-    for (const item of items) {
-      const product = await Product.findById(item.product).session(session);
+    const orderItems = [];
+
+    for (const cartItem of cart.items) {
+      const product = await Product.findById(cartItem.productId).session(
+        session,
+      );
 
       if (!product) {
         throw new Error("Producto no encontrado");
       }
 
-      if (product.stock < item.quantity) {
-        throw new Error("No stock Suficiente");
+      if (product.stock < cartItem.quantity) {
+        throw new Error(`Stock insuficiente para ${product.name}`);
       }
 
-      totalAmount += product.price * item.quantity;
+      totalAmount += product.price * cartItem.quantity;
 
-      product.stock -= item.quantity;
+      product.stock -= cartItem.quantity;
 
       await product.save({ session });
 
@@ -47,28 +58,35 @@ export const createOrder = async (req, res) => {
             product: product._id,
             direction: "out",
             reason: "sale",
-            quantity: item.quantity,
+            quantity: cartItem.quantity,
             createdBy: req.user.id,
           },
         ],
         { session },
       );
 
-      item.price = product.price;
+      orderItems.push({
+        product: product._id,
+        quantity: cartItem.quantity,
+        price: product.price,
+      });
     }
 
     const order = await Order.create(
       [
         {
-          customer: req.user.id,
-          address: address,
-          items,
+          user: req.user.id,
+          address,
+          items: orderItems,
           totalAmount,
           createdBy: req.user.id,
         },
       ],
       { session },
     );
+
+    cart.items = [];
+    await cart.save({ session });
 
     await session.commitTransaction();
 
@@ -87,7 +105,7 @@ export const createOrder = async (req, res) => {
 export const getOrders = async (req, res) => {
   try {
     const orders = await Order.find()
-      .populate("customer", "name email")
+      .populate("user", "name email")
       .populate("items.product", "name price");
 
     res.json(orders);
@@ -95,13 +113,14 @@ export const getOrders = async (req, res) => {
     res.status(500).json({
       message: "Error fetching orders",
     });
+    console.log(error);
   }
 };
 
 export const getOrderById = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id)
-      .populate("customer", "name email")
+      .populate("user", "name email")
       .populate("items.product", "name price");
 
     if (!order) {

@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import Address from "../models/address.model.js";
+import Order from "../models/orders.model.js";
 
 export const register = async (req, res) => {
   try {
@@ -107,10 +108,15 @@ export const profile = async (req, res) => {
 
     const addresses = await Address.find({ user: req.user.id });
 
+    const orders = await Order.find({ user: req.user.id })
+      .populate("items.product", "name price images")
+      .sort({ createdAt: -1 });
+
     res.json({
       message: "Perfil del usuario",
       user,
       addresses,
+      orders,
     });
   } catch (error) {
     console.log(error);

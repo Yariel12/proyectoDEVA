@@ -8,6 +8,7 @@ import ProductsRoutes from "./routes/products.routes.js";
 import invetoryMovements from "./routes/inventoryMovement.routes.js";
 import providerRoutes from "./routes/provider.routes.js";
 import ordersRoutes from "./routes/order.routes.js";
+import cartRoutes from "./routes/cart.routes.js";
 import addressRoutes from "./routes/address.routes.js";
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/category", categoryRouter);
 app.use("/api/products", ProductsRoutes);
 app.use("/api/inventory", invetoryMovements);
+app.use("/api/cart", cartRoutes);
 app.use("/api/providers", providerRoutes);
 app.use("/api/orders", ordersRoutes);
 app.use("/api/address", addressRoutes);
